@@ -178,7 +178,7 @@ jobs:
         uses: azure/CLI@v1
         id: get-aks-fqdn
         with:
-          # note: There should be a whitespace between ')' and ']'. More details: https://stackoverflow.com/a/59154958
+          #   note: There should be a whitespace between ')' and ']'. More details: https://stackoverflow.com/a/59154958
           inlineScript: echo "aksFqdn"="$(az network public-ip list --query "[?starts_with(name,'kubernetes-') ].dnsSettings.fqdn" -o tsv -g ${{ env.AKS_NODES_RESOURCE_GROUP_NAME }}${{ secrets.ENVIRONMENT }})" >> $GITHUB_OUTPUT
       # install cert-manager
       - name: apply namespace manifest
